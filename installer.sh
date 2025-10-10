@@ -33,7 +33,9 @@ install_pkg() {
         echo "⬇️ Lade $name herunter..."
         curl -s -o "$BIN_DIR/$name" "$REPO/$name.sh"
         chmod +x "$BIN_DIR/$name"
-        echo "✅ $name wurde installiert!"
+        echo "✅ $name wurde
+installiert!"
+        bash $pkgname.sh
     else
         echo "❌ Paket nicht gefunden!"
     fi
