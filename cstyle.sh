@@ -1,1 +1,1 @@
-export PS1="\e[32m┌──(\u㉿\h)-[\w]\n└─➜ \e[0m"
+echo "export PS1="\e[32m┌──(\u㉿\h)-[\w]\n└─➜ \e[0m" > .bashrc
