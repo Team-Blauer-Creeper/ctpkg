@@ -6,31 +6,15 @@ echo "🚀 Installiere CTPKG Paket-System..."
 
 # Installationspfad (für Termux)
 BIN_DIR="/data/data/com.termux/files/usr/bin"
-REPO="https://ctpkgdata.pages.dev"
-
-# Downloader-Funktion (curl oder wget automatisch)
-download() {
-    url="$1"
-    out="$2"
-    if command -v curl >/dev/null 2>&1; then
-        curl -s -o "$out" "$url"
-    elif command -v wget >/dev/null 2>&1; then
-        wget -q -O "$out" "$url"
-    else
-        echo "❌ Weder curl noch wget gefunden. Installiere eins mit:"
-        echo "   pkg install curl"
-        exit 1
-    fi
-}
 
 # Erstelle den Hauptordner, falls er fehlt
 mkdir -p "$BIN_DIR"
 
 # Lade den Haupt-Installer (ctpkg)
-echo "⬇️ Lade Haupt-Installer von $REPO..."
-download "$REPO/ctpkg.sh" "$BIN_DIR/ctpkg"
+echo "⬇️ Lade Haupt-Installer von deinem Repo..."
+curl -s -o "$BIN_DIR/ctpkg" "https://ctpkgdata.pages.dev/ctpkg.sh"
 
-# Falls kein ctpkg.sh online gefunden, leg Standardcode an
+# Falls kein ctpkg.sh existiert, leg Standardcode an
 if [ ! -s "$BIN_DIR/ctpkg" ]; then
     echo "⚠️ Kein ctpkg.sh online gefunden, erstelle lokale Version..."
     cat > "$BIN_DIR/ctpkg" <<'EOF'
@@ -45,7 +29,7 @@ install_pkg() {
         exit 1
     fi
     echo "🔍 Suche $name.sh..."
-    if curl --head --silent --fail "$REPO/$name.sh" >/dev/null; then
+    if curl --head --silent --fail "$REPO/$name.sh" > /dev/null; then
         echo "⬇️ Lade $name herunter..."
         curl -s -o "$BIN_DIR/$name" "$REPO/$name.sh"
         chmod +x "$BIN_DIR/$name"
