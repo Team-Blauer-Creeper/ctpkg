@@ -1,3 +1,3 @@
-cat < "eof" >> $PREFIX/bin/test
-echo test
-eof
+cd $PREFIX
+cd bin
+echo "echo test" >> test
