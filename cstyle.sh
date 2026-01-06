@@ -1,1 +1,2 @@
-echo "export PS1="\e[32m┌──(\u㉿\h)-[\w]\n└─➜ \e[0m" >> .bashrc
+echo PROMPT='%F{green}┌──(%F{red}root㉿exploitOS%F{green})-[%F{cyan}%~%F{green}]
+└─$ %f' > zshrc
