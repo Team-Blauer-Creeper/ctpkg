@@ -1,4 +1,5 @@
-echo "clear
+cat > ~/.zshrc << 'EOF'
+clear
 figlet -f slant EXPLOITOS
 echo "Kernel 6.6.6 | Secure Mode | Encrypted"
 echo "Initializing exploit modules..."
@@ -9,4 +10,5 @@ echo "System ready."
 neofetch
 
 PROMPT='%F{green}┌──(%F{red}root㉿exploitOS%F{green})-[%F{cyan}%~%F{green}]
-└─$ %f'" > .zshrc
+└─$ %f'
+EOF
